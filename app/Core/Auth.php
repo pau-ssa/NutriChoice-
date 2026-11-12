@@ -71,6 +71,4 @@ final class Auth
         }
         return $perfil;
     }
-
-    // Validación de rol (admin/colaborador/usuario): pendiente para el siguiente avance .
 }

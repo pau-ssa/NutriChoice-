@@ -68,7 +68,7 @@ final class AuthController
             'errores' => [],
             'datos' => ['nombre' => '', 'email' => '', 'condicion' => 'exclusion', 'restricciones' => [], 'carb_max' => '', 'azucar_max' => ''],
             'restricciones' => (new Restriccion())->listar(),
-            'seccion' => 'acceso',
+            'seccion' => 'registro',
         ], 'Crear cuenta');
     }
 
@@ -110,7 +110,7 @@ final class AuthController
         if ($errores) {
             http_response_code(422);
             View::render('auth/registro', ['errores' => $errores, 'datos' => $datos,
-                'restricciones' => $restr->listar(), 'seccion' => 'acceso'], 'Crear cuenta');
+                'restricciones' => $restr->listar(), 'seccion' => 'registro'], 'Crear cuenta');
             return;
         }
         $id = $this->usuarios->crear($datos + ['clave_hash' => password_hash($clave, PASSWORD_DEFAULT)]);

@@ -38,7 +38,7 @@
             <strong><?= e($s['sustituto']) ?></strong><br>
             <span class="texto-suave"><?= e($s['uso']) ?></span>
             <div class="etiquetas">
-              <?php foreach ($s['restricciones'] as $c): ?><span class="etiqueta etiqueta--nutricional"><?= e($nombresRestr[$c] ?? $c) ?></span><?php endforeach; ?>
+              <?php foreach ($s['restricciones'] as $c): ?><span class="etiqueta"><?= e($nombresRestr[$c] ?? $c) ?></span><?php endforeach; ?>
             </div>
           </div>
         </div>
