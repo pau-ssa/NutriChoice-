@@ -32,6 +32,9 @@ final class AdminController
     public function __construct()
     {
         Auth::requerirSesion();
+        if(Auth::rol()!=='admin'){
+            throw new HttpException(403, 'No cuenta con permisos para acceder a esta sección.');
+        }
         $this->aportes = new Aporte();
     }
 
