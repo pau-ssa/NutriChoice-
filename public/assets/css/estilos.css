@@ -276,3 +276,7 @@ label.chip { cursor: pointer; }
   .navbar, .footer, .lateral, .acciones, .no-imprimir { display: none !important; }
   .lateral-layout { grid-template-columns: 1fr; }
 }
+
+.sustitucion[hidden] {
+  display: none !important;
+}
