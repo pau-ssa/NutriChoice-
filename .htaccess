@@ -1,0 +1,5 @@
+# http://localhost/NutriChoice/ abre la aplicación (carpeta public/).
+# Todo lo demás fuera de public/ (código, configuración y base de datos) queda bloqueado.
+RewriteEngine On
+RewriteRule ^$ %{REQUEST_URI}public/ [R=302,L]
+RewriteRule ^(?!public/) - [F]
