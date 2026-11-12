@@ -10,13 +10,19 @@
           <a class="chip<?= $grupo === $g ? ' chip--activo' : '' ?>" href="<?= e(ruta('sustituciones', null, ['grupo' => $g])) ?>"><?= e($g) ?></a>
         <?php endforeach; ?>
       </div>
-      <input class="campo__control" style="max-width: 280px" type="search" placeholder="Filtrar, p. ej. leche" aria-label="Filtrar sustituciones" data-filtrar="lista-sustituciones">
+      <div class="acciones">
+        <input class="campo__control" style="max-width: 280px" type="search" placeholder="Filtrar, p. ej. leche" aria-label="Filtrar sustituciones" data-filtrar="lista-sustituciones" data-contador="contador-sustituciones" data-limpiar="limpiar-sustituciones">
+        <button id="limpiar-sustituciones" class="btn btn--secundario" type="button" disabled>Limpiar búsqueda</button>
+      </div>
     </div>
     <?php if (empty($sustituciones)): ?>
       <div class="alerta alerta--info" role="status">
         No hay sustituciones disponibles en este momento.
       </div>
     <?php endif; ?>
+    <p id="contador-sustituciones" class="texto-suave" role="status" aria-atomic="true">
+      Mostrando <?= count($sustituciones) ?> de <?= count($sustituciones) ?> sustituciones.
+    </p>
     <div id="lista-sustituciones">
       <p id="sin-coincidencias" class="alerta alerta--info" role="status" hidden>
         No se encontraron coincidencias.

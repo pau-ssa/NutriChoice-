@@ -257,19 +257,31 @@ function filtroInstantaneo() {
     $$('[data-filtrar]').forEach((entrada) => {
         const destino = document.getElementById(entrada.dataset.filtrar);
         if (!destino) return;
-        const normalizar = (t) => t.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
-        entrada.addEventListener('input', () => {
+        const elementos = $$('[data-filtrable]', destino);
+        const aviso = destino.querySelector('#sin-coincidencias');
+        const contador = document.getElementById(entrada.dataset.contador);
+        const limpiar = document.getElementById(entrada.dataset.limpiar);
+        const normalizar = (t) => t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+        const actualizar = () => {
             const q = normalizar(entrada.value.trim());
-            $$('[data-filtrable]', destino).forEach((el) => {
+            let visibles = 0;
+            elementos.forEach((el) => {
                 el.hidden = q !== '' && !normalizar(el.textContent).includes(q);
-                const aviso = destino.querySelector('#sin-coincidencias');
-                if (aviso){
-                    const elementos = $$('[data-filtrable]', destino);
-                    const hayVisibles = elementos.some(el => !el.hidden);
-                    aviso.hidden = q == '' || elementos.length === 0 || hayVisibles;  
-                }
+                if (!el.hidden) visibles++;
             });
-        });
+            if (aviso) aviso.hidden = q === '' || elementos.length === 0 || visibles > 0;
+            if (contador) contador.textContent = `Mostrando ${visibles} de ${elementos.length} sustituciones.`;
+            if (limpiar) limpiar.disabled = entrada.value === '';
+        };
+        entrada.addEventListener('input', actualizar);
+        if (limpiar) {
+            limpiar.addEventListener('click', () => {
+                entrada.value = '';
+                actualizar();
+                entrada.focus();
+            });
+        }
+        actualizar();
     });
 }
 
