@@ -21,7 +21,7 @@ final class PerfilController
     {
         Auth::requerirSesion();
         $this->usuarios = new Usuario();
-        $this->yo = Auth::perfil() ?? throw new HttpException(401, 'La sesión ya no es válida.');
+        $this->yo = Auth::requerirPerfil();
     }
 
     public function index(): void

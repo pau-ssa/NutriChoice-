@@ -61,5 +61,16 @@ final class Auth
         }
     }
 
+    public static function requerirPerfil(): array
+    {
+        $perfil = self::perfil();
+        if ($perfil === null) {
+            self::cerrar();
+            aviso('Su sesión ya no es válida. Inicie sesión de nuevo.', 'info');
+            redirigir('login');
+        }
+        return $perfil;
+    }
+
     // Validación de rol (admin/colaborador/usuario): pendiente para el siguiente avance .
 }
