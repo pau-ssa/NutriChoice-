@@ -18,9 +18,9 @@ $usuarioSesion = Auth::usuario();
   <div class="contenedor navbar__contenido">
     <a class="navbar__marca" href="<?= e(ruta()) ?>">
       <svg width="40" height="40" viewBox="0 0 64 64" aria-hidden="true">
-        <circle cx="32" cy="32" r="30" fill="#FFDE21"/>
-        <path d="M18 44c0-15 10-26 28-28-1 17-11 28-26 28h-2z" fill="#1E8258"/>
-        <path d="M20 44c6-8 12-14 20-20" stroke="#70D2E6" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <circle cx="32" cy="32" r="30" fill="#EAF1EC"/>
+        <path d="M18 44c0-15 10-26 28-28-1 17-11 28-26 28h-2z" fill="#356859"/>
+        <path d="M20 44c6-8 12-14 20-20" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="none"/>
       </svg>
       NutriChoice
     </a>
