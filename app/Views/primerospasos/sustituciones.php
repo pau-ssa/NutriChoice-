@@ -12,6 +12,11 @@
       </div>
       <input class="campo__control" style="max-width: 280px" type="search" placeholder="Filtrar, p. ej. leche" aria-label="Filtrar sustituciones" data-filtrar="lista-sustituciones">
     </div>
+    <?php if (empty($sustituciones)): ?>
+      <div class="alerta alerta--info" role="status">
+        No hay sustituciones disponibles en este momento.
+      </div>
+    <?php endif; ?>
     <div id="lista-sustituciones">
       <?php foreach ($sustituciones as $s): ?>
         <div class="sustitucion" data-filtrable>
