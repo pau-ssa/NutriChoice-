@@ -262,6 +262,12 @@ function filtroInstantaneo() {
             const q = normalizar(entrada.value.trim());
             $$('[data-filtrable]', destino).forEach((el) => {
                 el.hidden = q !== '' && !normalizar(el.textContent).includes(q);
+                const aviso = destino.querySelector('#sin-coincidencias');
+                if (aviso){
+                    const elementos = $$('[data-filtrable]', destino);
+                    const hayVisibles = elementos.some(el => !el.hidden);
+                    aviso.hidden = q == '' || elementos.length === 0 || hayVisibles;  
+                }
             });
         });
     });

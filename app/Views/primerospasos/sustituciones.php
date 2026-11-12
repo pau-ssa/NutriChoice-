@@ -18,6 +18,9 @@
       </div>
     <?php endif; ?>
     <div id="lista-sustituciones">
+      <p id="sin-coincidencias" class="alerta alerta--info" role="status" hidden>
+        No se encontraron coincidencias.
+      </p>
       <?php foreach ($sustituciones as $s): ?>
         <div class="sustitucion" data-filtrable>
           <div>
