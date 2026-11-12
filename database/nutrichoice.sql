@@ -84,7 +84,7 @@ CREATE TABLE usuarios (
   nombre VARCHAR(120) NOT NULL,
   email VARCHAR(190) NOT NULL UNIQUE,
   clave_hash VARCHAR(255) NOT NULL,
-  rol ENUM('usuario','colaborador','admin') NOT NULL DEFAULT 'usuario',  --TODAVIA NO LO CONFIGURAMOS
+  rol ENUM('usuario','colaborador','admin') NOT NULL DEFAULT 'usuario',  -- TODAVIA NO LO CONFIGURAMOS
   condicion ENUM('exclusion','diabetes','ambas','ninguna') NOT NULL DEFAULT 'ninguna',
   carb_max DECIMAL(6,1) NULL,      -- g por porción (perfil de diabetes)
   azucar_max DECIMAL(6,1) NULL,
