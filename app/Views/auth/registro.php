@@ -23,10 +23,12 @@
           <label class="campo__etiqueta" for="clave">Contraseña</label>
           <input class="campo__control" id="clave" type="password" name="clave" autocomplete="new-password" required minlength="8" pattern="(?=.*[A-Za-z])(?=.*\d).{8,}">
           <span class="campo__ayuda">Mínimo 8 caracteres, con letras y números.</span>
+          <label class="opcion campo__ayuda"><input type="checkbox" data-ver-clave="clave" aria-controls="clave"> Mostrar contraseña</label>
         </div>
         <div class="campo">
           <label class="campo__etiqueta" for="clave2">Confirmar contraseña</label>
           <input class="campo__control" id="clave2" type="password" name="clave2" autocomplete="new-password" required data-igual-a="clave">
+          <label class="opcion campo__ayuda"><input type="checkbox" data-ver-clave="clave2" aria-controls="clave2"> Mostrar confirmación</label>
         </div>
       </div>
 

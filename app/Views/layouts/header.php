@@ -31,7 +31,9 @@ $usuarioSesion = Auth::usuario();
       <?= nav_link($seccion, 'productos', 'productos', 'Productos') ?>
       <?= nav_link($seccion, 'recetas', 'recetas', 'Recetas') ?>
       <?= nav_link($seccion, 'restaurantes', 'restaurantes', 'Restaurantes') ?>
-      <?= nav_link($seccion, 'admin', 'admin', 'Administración') ?>
+      <?php if (Auth::rol() === 'admin'): ?>
+        <?= nav_link($seccion, 'admin', 'admin', 'Administración') ?>
+      <?php endif; ?>
       <?php if ($usuarioSesion): ?>
         <?= nav_link($seccion, 'comunidad', 'aportes', 'Comunidad') ?>
         <?= nav_link($seccion, 'perfil', 'perfil', 'Mi perfil') ?>
