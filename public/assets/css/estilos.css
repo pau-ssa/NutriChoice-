@@ -42,13 +42,13 @@ ul, ol { padding-left: 1.5rem; }
 
 /* Cajas blancas con borde */
 .panel, .tarjeta, .filtros, .lateral, .tabla-contenedor, .indicador, .sustitucion {
-  background: var(--NutriChoice-blanco); border: 1px solid var(--NutriChoice-borde); border-radius: 10px;
+  background: var(--NutriChoice-blanco); border: 1px solid var(--NutriChoice-borde); border-radius: 16px;
 }
 .panel { padding: 1.5rem; }
 
 /*  TARJETAS  */
-.tarjeta { display: flex; flex-direction: column; overflow: hidden; }
-.tarjeta--enlace:hover { border-color: #9BAD9F; box-shadow: 0 3px 10px rgba(41,52,47,.06); }
+.tarjeta { display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 1px 3px rgba(41,52,47,.05); transition: transform .2s, box-shadow .2s; }
+.tarjeta--enlace:hover { border-color: #9BAD9F; box-shadow: 0 12px 28px rgba(41,52,47,.1); transform: translateY(-3px); }
 .tarjeta__imagen { height: 180px; background: var(--NutriChoice-jade-claro); object-fit: cover; }
 .tarjeta__cuerpo { display: flex; flex: 1; flex-direction: column; gap: .75rem; padding: 1.25rem; }
 .tarjeta__titulo, .tarjeta__meta { margin: 0; }
@@ -76,9 +76,9 @@ textarea.campo__control { min-height: 110px; }
 /* BOTONES */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; padding: .6rem 1.2rem;
-  border: 1px solid transparent; border-radius: 6px; font-family: inherit; font-size: .95rem; font-weight: 600; cursor: pointer;
+  border: 1px solid transparent; border-radius: 6px; font-family: inherit; font-size: .95rem; font-weight: 600; line-height: inherit; cursor: pointer; transition: background .15s, color .15s, filter .15s;
 }
-.btn:hover { text-decoration: none; filter: brightness(.96); }
+.btn:hover { text-decoration: none; filter: brightness(.88); }
 .btn:disabled { opacity: .5; cursor: default; filter: none; }
 .btn--primario { background: var(--NutriChoice-jade); color: var(--NutriChoice-blanco); }
 .btn--acento { background: var(--NutriChoice-jade); color: var(--NutriChoice-blanco); }
@@ -86,6 +86,8 @@ textarea.campo__control { min-height: 110px; }
 .btn--peligro { background: var(--NutriChoice-rojo); color: var(--NutriChoice-blanco); }
 .btn--sm { padding: .35rem .75rem; font-size: .85rem; }
 .btn--bloque { width: 100%; }
+.btn--primario:hover:not(:disabled), .btn--acento:hover:not(:disabled) { background: var(--NutriChoice-jade-oscuro); filter: none; }
+.btn--secundario:hover:not(:disabled) { background: var(--NutriChoice-jade); color: var(--NutriChoice-blanco); filter: none; }
 
 /*  INICIO, BÚSQUEDA Y FILTROS  */
 .hero { padding: 3rem 1rem; background: var(--NutriChoice-jade-claro); border-bottom: 1px solid var(--NutriChoice-borde); color: var(--NutriChoice-texto); text-align: center; }
@@ -104,8 +106,8 @@ textarea.campo__control { min-height: 110px; }
 /*  ETIQUETAS Y CHIPS  */
 .etiquetas { display: flex; flex-wrap: wrap; gap: .25rem; }
 .etiqueta, .chip { display: inline-block; padding: .15rem .6rem; border-radius: 999px; font-size: .75rem; font-weight: 600; }
-.etiqueta { background: var(--NutriChoice-jade-claro); color: var(--NutriChoice-jade-oscuro); }
-.etiqueta--nutricional { background: var(--NutriChoice-celeste-claro); color: var(--NutriChoice-texto); }
+.etiqueta { background: #DCEBE2; border: 1px solid rgba(37,75,64,.25); color: var(--NutriChoice-jade-oscuro); }
+.etiqueta--nutricional { background: #DCE8EE; border-color: rgba(82,122,138,.45); color: #2F5362; }
 .etiqueta--pendiente, .etiqueta--opciones-adaptadas { background: var(--NutriChoice-amarillo); color: var(--NutriChoice-texto); }
 .etiqueta--aprobado, .etiqueta--cocina-separada { background: var(--NutriChoice-jade); color: var(--NutriChoice-blanco); }
 .etiqueta--rechazado { background: var(--NutriChoice-rojo); color: var(--NutriChoice-blanco); }
@@ -141,10 +143,10 @@ textarea.campo__control { min-height: 110px; }
 .tabla { width: 100%; border-collapse: collapse; font-size: .925rem; }
 .tabla th, .tabla td { padding: .75rem 1rem; border-bottom: 1px solid var(--NutriChoice-borde); text-align: left; }
 .tabla th { background: var(--NutriChoice-jade-claro); color: var(--NutriChoice-jade-oscuro); white-space: nowrap; }
-.tabla__acciones { display: flex; gap: .25rem; white-space: nowrap; }
+.tabla__acciones { display: flex; align-items: center; gap: .25rem; white-space: nowrap; }
 .alerta { padding: .75rem 1rem; margin-bottom: 1rem; border-left: 4px solid; border-radius: 6px; }
 .alerta--exito { background: var(--NutriChoice-jade-claro); border-color: var(--NutriChoice-jade); color: var(--NutriChoice-jade-oscuro); }
-.alerta--aviso { background: #F6F0E4; border-color: var(--NutriChoice-amarillo); }
+.alerta--aviso { background: #F6F0E4; border-color: #CDB98A; }
 .alerta--info { background: var(--NutriChoice-celeste-claro); border-color: var(--NutriChoice-celeste); }
 
 /*  MODAL  */
@@ -202,9 +204,14 @@ footer {
 
 /* Inicio */
 .hero h1 { color: var(--NutriChoice-jade-oscuro); }
+.main:has(> .hero:first-child) { padding-top: 0; }
 .hero__acciones { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; margin-top: 1rem; }
-.hero .campo__control { flex: 1; }
+.hero .campo__control { flex: 1; padding-inline: 1.25rem; border-radius: 999px; }
+.buscador .btn { padding-inline: 1.5rem; border-radius: 999px; }
 .pasos-inicio { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 1.5rem; }
+.pasos-inicio .panel { border-top: 3px solid var(--NutriChoice-jade); box-shadow: 0 1px 3px rgba(41,52,47,.05); }
+.pasos-inicio h3 { color: var(--NutriChoice-jade-oscuro); }
+.pasos-inicio p { margin-bottom: 0; }
 
 /* Tarjetas sin fotografía: bloque de color con ícono */
 .tarjeta__imagen { display: grid; place-items: center; height: 96px; font-size: 2.2rem; }
