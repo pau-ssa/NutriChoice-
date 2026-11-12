@@ -3,6 +3,11 @@
     <h1>Primeros pasos</h1>
     <p class="texto-suave">Acompañamiento para personas con un diagnóstico reciente: reaprender a comprar, cocinar y comer fuera, paso a paso.</p>
     <h2>Guía de transición</h2>
+      <?php if (empty($guias)): ?>
+        <div class="alerta alerta--info" role="status">
+          No hay guías disponibles en este momento.      
+        </div>
+      <?php endif; ?>
     <div class="grid">
       <?php foreach ($guias as $clave => $g): ?>
         <article class="tarjeta tarjeta--enlace">
