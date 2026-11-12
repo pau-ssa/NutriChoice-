@@ -34,6 +34,9 @@ $usuarioSesion = Auth::usuario();
       <?php if (Auth::rol() === 'admin'): ?>
         <?= nav_link($seccion, 'admin', 'admin', 'Administración') ?>
       <?php endif; ?>
+      <?php if (Auth::rol() === 'colaborador'): ?>
+        <?= nav_link($seccion, 'moderacion', 'moderacion', 'Moderación') ?>
+      <?php endif; ?>
       <?php if ($usuarioSesion): ?>
         <?= nav_link($seccion, 'comunidad', 'aportes', 'Comunidad') ?>
         <?= nav_link($seccion, 'perfil', 'perfil', 'Mi perfil') ?>

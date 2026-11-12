@@ -32,6 +32,7 @@ final class Router
         $restaurantes = fn() => new RestauranteController();
         $comunidad = fn() => new ComunidadController();
         $admin = fn() => new AdminController();
+        $moderacion = fn() => new AdminController(true);
 
         $rutas = [
             // 1) Inicio
@@ -84,12 +85,13 @@ final class Router
             'POST resena_guardar' => fn() => $comunidad()->guardarResena(),
             // 9) Administración
             'GET admin' => fn() => $admin()->index(),
-            'POST aporte_resolver' => fn() => $admin()->resolverAporte(),
+            'GET moderacion' => fn() => $moderacion()->moderacion(),
+            'POST aporte_resolver' => fn() => $moderacion()->resolverAporte(),
             'GET usuarios' => fn() => $admin()->usuarios(),
             'POST usuario_actualizar' => fn() => $admin()->actualizarUsuario(),
             'GET catalogo' => fn() => $admin()->catalogo(),
-            'GET catalogo_form' => fn() => $admin()->formulario(),
-            'POST catalogo_guardar' => fn() => $admin()->guardar(),
+            'GET catalogo_form' => fn() => $moderacion()->formulario(),
+            'POST catalogo_guardar' => fn() => $moderacion()->guardar(),
             'POST catalogo_eliminar' => fn() => $admin()->eliminar(),
         ];
 
