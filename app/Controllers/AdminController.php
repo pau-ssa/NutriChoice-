@@ -31,7 +31,7 @@ final class AdminController
 
     public function __construct()
     {
-        // Validación de rol pendiente para el avance final (por ahora la sección es abierta).
+        Auth::requerirSesion();
         $this->aportes = new Aporte();
     }
 
